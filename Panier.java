@@ -41,15 +41,35 @@ public class Panier{
 			return true;
 		}
 	}
+	public void retire()
+	{
+		if(this.estVide())
+		{
+			System.out.println("panier vide");
+		}
+		else
+		{
+			panier.remove(panier.size()-1);
+		}
+	}
+	public double getPrix()
+	{	
+		double somme=0;
+		for( int i=0;i<panier.size();i++)
+		{
+			somme=somme+panier.get(i).getPrix();
+		}
+		return somme ;
+	}	
 	public static void main(String []args)
 	{
 		Orange o=new Orange(5,"France");
+		Orange o1=new Orange(5,"France");
+		Orange o2=new Orange(5,"France");
 		Panier p1=new Panier(5);
-		System.out.println(p1.getNbMaxOrange());
-		System.out.println(p1.getNbOrange());
 		System.out.println(p1.ajoute(o));
-		System.out.println(p1.getNbOrange());
-		System.out.println(p1.estPlein());
-		System.out.println(p1.estVide());
+		System.out.println(p1.ajoute(o1));
+		System.out.println(p1.ajoute(o2));
+		System.out.println(p1.getPrix());
 	}
 }
